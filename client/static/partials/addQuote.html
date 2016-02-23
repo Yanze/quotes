@@ -1,0 +1,36 @@
+<div class="row col-md-10" ng-controller="addQuoteController">
+  <h1>Welcome</h1>
+  <p class="alert alert-success" ng-show="warning">{{warning}}</p>
+  <p class="alert alert-success" ng-show="success">{{success}}</p>
+
+  <form name="myForm" class="form" novalidate>
+    <div class="form-group">
+      <label for="">Name:</label>
+      <input name="username" type="text"
+            class="form-control"
+            ng-model="quote.username"
+            ng-minlength="3"
+            required/>
+    </div>
+    <div ng-messages="myForm.username.$error" style="color:red" role="alert" ng-if="submitted">
+        <div ng-message="required">Username cannot be blank.</div>
+        <div ng-message="minlength">Username must be more than 3 letters.</div>
+      </div>
+
+    <div class="form-group">
+      <label for="">Quote:</label>
+      <textarea name="content" rows="8" cols="40"
+                class="form-control"
+                ng-model="quote.content"
+                ng-minlength="10"
+                required></textarea>
+    </div>
+    <div ng-messages="myForm.content.$error" style="color:red" role="alert" ng-if="submitted">
+      <div ng-message="required">Quote cannot be blank.</div>
+      <div ng-message="minlength">Quote must be more than 10 letters.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" ng-click="add(quote)">Add</button>
+    <a class="btn btn-default pull-right" href="#/main">Skip</a>
+  </form>
+</div>

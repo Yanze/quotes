@@ -1,0 +1,15 @@
+<div class="col-md-10" ng-controller="mainController">
+  <h2>Here are some awesome quotes</h2>
+
+  <br>
+  <br>
+  <div ng-repeat="quote in quotes | orderBy: '-likes'">
+    <h4>{{quote.quote}}</h4>
+    <small>-{{quote.username}} {{quote.createdAt | date: 'medium'}}</small>
+    <button class="btn btn-success btn-xs" ng-click="addLike(quote)">{{quote.likes}} Like(s)</button>
+
+    <hr>
+  </div>
+
+  <a href="#/">Go Back</a>
+</div>
